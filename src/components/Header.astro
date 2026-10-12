@@ -1,95 +1,108 @@
 ---
-import { Image } from 'astro:assets';
-import logoSymbol from '../assets/images/logo-symbol.png';
+// Minimalist luxury header inspired by Tengile MalaMala Collection
 ---
 
-<!-- Skip to main content for keyboard accessibility -->
-<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[var(--forest)] focus:text-white focus:rounded-[var(--radius-sm)] focus:font-bold">
-  Lewati ke konten utama
-</a>
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 bg-[var(--tm-dark)]/85 backdrop-blur-md border-b border-white/10" id="site-header">
+  <div class="container-tm flex items-center justify-between">
+    <!-- Left: Direct Action Link -->
+    <div class="flex items-center gap-6">
+      <a href="#demo" class="text-xs uppercase tracking-[0.16em] font-medium text-[var(--tm-stone)] hover:text-white transition-colors flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--tm-accent-gold)]"></span>
+        <span>Simulasi Sistem</span>
+      </a>
+    </div>
 
-<header class="site-header sticky top-0 z-50 border-b border-[var(--border-soft)] transition-all duration-150" id="top-header" style="background-color: rgba(244, 238, 225, 0.94); backdrop-filter: blur(10px);">
-  <div class="container flex items-center justify-between h-[72px]">
-    <a href="#top" class="brand flex items-center gap-3 no-underline group" aria-label="Beranda Halaqoh">
-      <div class="brand-emblem w-[38px] h-[38px] bg-[var(--forest)] text-[var(--cream-light)] rounded-[var(--radius-sm)] flex items-center justify-center border-[1.5px] border-[var(--border-strong)] shadow-[var(--shadow-sm)] transition-transform duration-150 group-hover:-translate-x-[1px] group-hover:-translate-y-[1px] group-hover:shadow-[var(--shadow-md)] overflow-hidden p-1">
-        <Image src={logoSymbol} alt="Logo Halaqoh" width={32} height={32} class="w-full h-full object-contain" />
-      </div>
-      <span class="brand-name font-[var(--font-display)] text-[1.35rem] font-bold tracking-[-0.03em] text-[var(--ink)] flex items-center gap-1.5">
+    <!-- Center: Brand Wordmark -->
+    <a href="#top" class="text-center group" aria-label="Beranda Halaqoh">
+      <span class="block font-serif text-2xl md:text-3xl font-normal tracking-[0.22em] uppercase text-[var(--tm-stone)] group-hover:text-white transition-colors">
         Halaqoh
-        <span class="brand-badge text-[0.65rem] uppercase tracking-[0.08em] font-[var(--font-body)] font-bold bg-[var(--hl-olive)] text-[var(--forest)] px-1.5 py-0.5 rounded-[var(--radius-pill)] border border-[var(--border-strong)]">
-          PWA
-        </span>
+      </span>
+      <span class="block text-[0.625rem] uppercase tracking-[0.25em] text-[var(--tm-accent-gold)] font-sans -mt-0.5">
+        Manajemen Santri
       </span>
     </a>
 
-    <nav aria-label="Navigasi Utama">
-      <ul class="nav-links hidden md:flex items-center gap-8 list-none" id="main-nav">
-        <li><a href="#fitur" class="nav-link text-[0.925rem] font-semibold text-[var(--ink-secondary)] hover:text-[var(--forest)] py-1.5 transition-colors">Fitur Utama</a></li>
-        <li><a href="#peran" class="nav-link text-[0.925rem] font-semibold text-[var(--ink-secondary)] hover:text-[var(--forest)] py-1.5 transition-colors">Tampilan Antarmuka</a></li>
-        <li><a href="#alur" class="nav-link text-[0.925rem] font-semibold text-[var(--ink-secondary)] hover:text-[var(--forest)] py-1.5 transition-colors">Cara Kerja</a></li>
-        <li><a href="#keamanan" class="nav-link text-[0.925rem] font-semibold text-[var(--ink-secondary)] hover:text-[var(--forest)] py-1.5 transition-colors">Keamanan & Privasi</a></li>
-        <li><a href="#faq" class="nav-link text-[0.925rem] font-semibold text-[var(--ink-secondary)] hover:text-[var(--forest)] py-1.5 transition-colors">Tanya Jawab</a></li>
-      </ul>
-    </nav>
-
-    <div class="nav-actions flex items-center gap-3">
-      <a href="#peran" class="btn btn-secondary btn-sm hidden sm:inline-flex min-h-[40px] items-center" id="btn-nav-demo">Lihat Demo</a>
-      <a href="#kontak" class="btn btn-primary btn-sm hidden sm:inline-flex min-h-[40px] items-center">Konsultasi Pengajian</a>
-      <button class="btn-mobile-toggle md:hidden bg-[var(--paper)] border-[1.5px] border-[var(--border-strong)] rounded-[var(--radius-sm)] p-2.5 cursor-pointer shadow-[var(--shadow-sm)] min-h-[44px] min-w-[44px] flex items-center justify-center" id="btn-toggle-menu" aria-label="Buka Menu Navigasi" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
+    <!-- Right: Menu Button -->
+    <div class="flex items-center gap-4">
+      <button
+        type="button"
+        id="menu-toggle-btn"
+        class="text-xs uppercase tracking-[0.16em] font-medium text-[var(--tm-stone)] hover:text-white px-4 py-2 rounded-full border border-white/15 hover:border-white/30 transition-all"
+        aria-expanded="false"
+        aria-controls="mobile-menu-drawer"
+      >
+        Menu
       </button>
     </div>
   </div>
-
-  <div class="mobile-nav-panel hidden md:hidden border-b-2 border-[var(--border-strong)] bg-[var(--cream)] px-6 py-5 shadow-[var(--shadow-md)]" id="mobile-menu-container">
-    <ul class="flex flex-col gap-4 list-none">
-      <li><a href="#fitur" class="block font-semibold text-[var(--ink)] py-2 mobile-link text-base">Fitur Utama</a></li>
-      <li><a href="#peran" class="block font-semibold text-[var(--ink)] py-2 mobile-link text-base">Tampilan Antarmuka</a></li>
-      <li><a href="#alur" class="block font-semibold text-[var(--ink)] py-2 mobile-link text-base">Cara Kerja</a></li>
-      <li><a href="#keamanan" class="block font-semibold text-[var(--ink)] py-2 mobile-link text-base">Keamanan & Privasi</a></li>
-      <li><a href="#faq" class="block font-semibold text-[var(--ink)] py-2 mobile-link text-base">Tanya Jawab</a></li>
-      <li class="pt-3 flex flex-col sm:flex-row gap-3 border-t border-[var(--border-soft)]">
-        <a href="#peran" class="btn btn-secondary min-h-[44px] w-full text-center mobile-link">Lihat Demo</a>
-        <a href="#kontak" class="btn btn-primary min-h-[44px] w-full text-center mobile-link">Konsultasi Pengajian</a>
-      </li>
-    </ul>
-  </div>
 </header>
 
+<!-- Fullscreen Editorial Drawer Menu -->
+<div id="mobile-menu-drawer" class="fixed inset-0 z-50 bg-[var(--tm-dark)]/98 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 flex flex-col justify-between p-8 md:p-16">
+  <div class="flex items-center justify-between border-b border-white/10 pb-6">
+    <span class="font-serif text-2xl tracking-[0.2em] uppercase text-[var(--tm-stone)]">Halaqoh</span>
+    <button type="button" id="menu-close-btn" class="text-xs uppercase tracking-[0.2em] text-[var(--tm-accent-gold)] hover:text-white transition-colors">
+      Tutup &#x2715;
+    </button>
+  </div>
+
+  <nav class="my-auto py-12">
+    <ul class="flex flex-col gap-6 md:gap-8 max-w-xl">
+      <li>
+        <a href="#manifesto" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
+          01. Filosofi & Keheningan
+        </a>
+      </li>
+      <li>
+        <a href="#pilar" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
+          02. Tiga Pilar Akses
+        </a>
+      </li>
+      <li>
+        <a href="#demo" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
+          03. Simulasi & Sesi Shalat
+        </a>
+      </li>
+      <li>
+        <a href="#spesifikasi" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
+          04. Rekayasa Offline & Keamanan
+        </a>
+      </li>
+      <li>
+        <a href="#faq" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
+          05. Tanya Jawab (FAQ)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--tm-ink-muted)]">
+    <p>Aplikasi Web Progresif (PWA) Offline-First untuk Pengajian Santri.</p>
+    <p>Desain Terinspirasi Suasana MalaMala Tengile Retreat.</p>
+  </div>
+</div>
+
 <script>
-  const toggleBtn = document.getElementById('btn-toggle-menu');
-  const mobileMenu = document.getElementById('mobile-menu-container');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-  const header = document.getElementById('top-header');
+  const toggleBtn = document.getElementById('menu-toggle-btn');
+  const closeBtn = document.getElementById('menu-close-btn');
+  const drawer = document.getElementById('mobile-menu-drawer');
+  const navLinks = document.querySelectorAll('.menu-nav-link');
 
-  if (toggleBtn && mobileMenu) {
-    toggleBtn.addEventListener('click', () => {
-      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
-      mobileMenu.classList.toggle('hidden');
-    });
+  const openMenu = () => {
+    drawer?.classList.remove('opacity-0', 'pointer-events-none');
+    drawer?.classList.add('opacity-100', 'pointer-events-auto');
+    toggleBtn?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        toggleBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
+  const closeMenu = () => {
+    drawer?.classList.add('opacity-0', 'pointer-events-none');
+    drawer?.classList.remove('opacity-100', 'pointer-events-auto');
+    toggleBtn?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
 
-  if (header) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        header.style.boxShadow = '0 4px 15px rgba(23, 22, 20, 0.06)';
-        header.style.backgroundColor = 'rgba(244, 238, 225, 0.98)';
-      } else {
-        header.style.boxShadow = 'none';
-        header.style.backgroundColor = 'rgba(244, 238, 225, 0.94)';
-      }
-    }, { passive: true });
-  }
+  toggleBtn?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  navLinks.forEach(link => link.addEventListener('click', closeMenu));
 </script>

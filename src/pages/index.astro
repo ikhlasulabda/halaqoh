@@ -1,22 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import ContextContrast from '../components/ContextContrast.astro';
+import EditorialManifesto from '../components/EditorialManifesto.astro';
+import AsymmetricStory from '../components/AsymmetricStory.astro';
+import SanctuaryPillars from '../components/SanctuaryPillars.astro';
 import RoleWalkthrough from '../components/RoleWalkthrough';
 import FeaturesGrid from '../components/FeaturesGrid.astro';
-import Workflow from '../components/Workflow.astro';
 import SecurityPrivacy from '../components/SecurityPrivacy.astro';
 import FaqAccordion from '../components/FaqAccordion';
 import FinalCta from '../components/FinalCta.astro';
 ---
 
 <Layout>
+  <!-- Full-bleed Looping Video Hero -->
   <Hero />
-  <ContextContrast />
+
+  <!-- Editorial Grand Manifesto Statement -->
+  <EditorialManifesto />
+
+  <!-- Asymmetric Double Image Layout (Rehal & Arches) -->
+  <AsymmetricStory />
+
+  <!-- Three Pillars of Access (Action Cards) -->
+  <SanctuaryPillars />
+
+  <!-- Interactive Three-Role System Walkthrough -->
   <RoleWalkthrough client:visible />
+
+  <!-- Technical Engineering Pillars (Hairline Grid) -->
   <FeaturesGrid />
-  <Workflow />
+
+  <!-- Data Security & Child Privacy Standards -->
   <SecurityPrivacy />
+
+  <!-- Minimalist Editorial FAQ -->
   <FaqAccordion client:visible />
+
+  <!-- Full-bleed Sanctuary Architectural Photo Break & Final Invitation -->
   <FinalCta />
 </Layout>

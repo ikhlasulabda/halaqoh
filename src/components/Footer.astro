@@ -1,84 +1,84 @@
 ---
-// Footer component: tactile craft footer with official emblem and navigation
-import { Image } from 'astro:assets';
-import logoLandscape from '../assets/images/logo-brand.png';
-
+// Minimalist luxury footer inspired by Tengile MalaMala
 const currentYear = 2026;
 ---
 
-<footer class="bg-[var(--sand)] border-t-2 border-[var(--border-strong)] pt-12 pb-8">
-  <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-[var(--border-strong)]/20">
-      <!-- Col 1: Brand Info -->
-      <div class="md:col-span-2 flex flex-col items-start gap-4">
-        <a href="#top" class="inline-flex items-center gap-3">
-          <Image
-            src={logoLandscape}
-            alt="Logo Resmi Halaqoh"
-            class="h-10 w-auto object-contain"
-            width={240}
-            height={90}
-          />
+<footer class="bg-[var(--tm-dark)] border-t border-white/10 pt-20 pb-12">
+  <div class="container-tm">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+      
+      <!-- Brand & Mission -->
+      <div class="md:col-span-5 flex flex-col items-start gap-6">
+        <a href="#top" class="group" aria-label="Beranda Halaqoh">
+          <span class="font-serif text-3xl font-normal tracking-[0.22em] uppercase text-white block">
+            Halaqoh
+          </span>
+          <span class="text-[0.625rem] uppercase tracking-[0.25em] text-[var(--tm-accent-gold)] font-sans">
+            Manajemen Santri &amp; Pengajian
+          </span>
         </a>
-        <p class="text-sm text-[var(--ink-secondary)] leading-relaxed max-w-md">
-          Platform manajemen pengajian santri ramah luring (offline-first). Dirancang khusus untuk TPA, musholla, dan majelis ilmu yang mengutamakan ketertiban administrasi serta transparansi bagi para wali santri.
+        <p class="text-xs sm:text-sm text-[var(--tm-stone)]/70 font-light leading-relaxed max-w-sm">
+          Platform manajemen presensi dan setoran hafalan santri ramah luring (offline-first). Dirancang khusus untuk musholla, TPA, dan majelis ilmu yang mengedepankan ketertiban administrasi serta ketenangan hati para orang tua.
         </p>
-        <div class="flex items-center gap-2 text-xs font-semibold text-[var(--forest)]">
-          <span class="w-2 h-2 rounded-full bg-[var(--forest)]"></span>
-          <span>Bekerja mandiri tanpa ketergantungan sinyal internet</span>
+        <div class="text-[0.6875rem] uppercase tracking-[0.18em] text-[var(--tm-accent-gold)]">
+          Beroperasi Mandiri Tanpa Ketergantungan Internet
         </div>
       </div>
 
-      <!-- Col 2: Navigasi Cepat -->
-      <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--ink)] mb-4">Navigasi Halaman</h4>
-        <ul class="flex flex-col gap-2.5 text-sm font-medium text-[var(--ink-secondary)]">
-          <li><a href="#top" class="hover:text-[var(--forest)] transition-colors">Beranda</a></li>
-          <li><a href="#demo" class="hover:text-[var(--forest)] transition-colors">Simulasi 3 Peran</a></li>
-          <li><a href="#fitur" class="hover:text-[var(--forest)] transition-colors">Kapabilitas Teknis</a></li>
-          <li><a href="#alur" class="hover:text-[var(--forest)] transition-colors">Alur Operasional</a></li>
-          <li><a href="#keamanan" class="hover:text-[var(--forest)] transition-colors">Keamanan & Privasi</a></li>
-          <li><a href="#faq" class="hover:text-[var(--forest)] transition-colors">Pertanyaan Umum</a></li>
+      <!-- Navigation Links -->
+      <div class="md:col-span-3">
+        <h4 class="text-xs uppercase tracking-[0.2em] text-white/90 font-medium mb-6">
+          Navigasi Halaman
+        </h4>
+        <ul class="flex flex-col gap-3 text-xs uppercase tracking-[0.14em] text-[var(--tm-stone)]/70 font-light">
+          <li><a href="#top" class="hover:text-white transition-colors">01. Beranda</a></li>
+          <li><a href="#manifesto" class="hover:text-white transition-colors">02. Filosofi &amp; Manifesto</a></li>
+          <li><a href="#pilar" class="hover:text-white transition-colors">03. Tiga Pilar Akses</a></li>
+          <li><a href="#demo" class="hover:text-white transition-colors">04. Simulasi Sistem</a></li>
+          <li><a href="#spesifikasi" class="hover:text-white transition-colors">05. Spesifikasi Teknis</a></li>
+          <li><a href="#keamanan" class="hover:text-white transition-colors">06. Keamanan &amp; Privasi</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">07. Tanya Jawab (FAQ)</a></li>
         </ul>
       </div>
 
-      <!-- Col 3: Standar Rekayasa -->
-      <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider text-[var(--ink)] mb-4">Arsitektur Rekayasa</h4>
-        <ul class="flex flex-col gap-2.5 text-xs text-[var(--ink-secondary)] leading-relaxed">
-          <li class="flex items-start gap-2">
-            <span class="text-[var(--forest)] font-bold">&bull;</span>
-            <span><strong>Offline-First:</strong> Serwist Service Worker & IndexedDB</span>
+      <!-- Architectural Highlights -->
+      <div class="md:col-span-4">
+        <h4 class="text-xs uppercase tracking-[0.2em] text-white/90 font-medium mb-6">
+          Standar Rekayasa
+        </h4>
+        <ul class="flex flex-col gap-3.5 text-xs text-[var(--tm-stone)]/70 font-light leading-relaxed">
+          <li>
+            <strong class="text-white font-medium block">Offline-First PWA:</strong>
+            Serwist Service Worker &amp; IndexedDB lokal peramban.
           </li>
-          <li class="flex items-start gap-2">
-            <span class="text-[var(--forest)] font-bold">&bull;</span>
-            <span><strong>PDF Engine:</strong> Standar binary PDF 1.4 zero-dependency</span>
+          <li>
+            <strong class="text-white font-medium block">Native PDF 1.4:</strong>
+            Generator dokumen rekap A4 Landscape murni tanpa library eksternal.
           </li>
-          <li class="flex items-start gap-2">
-            <span class="text-[var(--forest)] font-bold">&bull;</span>
-            <span><strong>Sandi & Sesi:</strong> Bcrypt hash, HTTP-only SameSite cookie</span>
+          <li>
+            <strong class="text-white font-medium block">Kredensial &amp; Sesi:</strong>
+            Bcrypt hash (cost 10), HTTP-only Secure SameSite cookies.
           </li>
-          <li class="flex items-start gap-2">
-            <span class="text-[var(--forest)] font-bold">&bull;</span>
-            <span><strong>Akses Publik:</strong> Kriptografis slug acak tanpa login</span>
+          <li>
+            <strong class="text-white font-medium block">Akses Wali Santri:</strong>
+            Slug acak kriptografis tanpa login terlindung dari bot perayap Google.
           </li>
         </ul>
       </div>
+
     </div>
 
     <!-- Bottom Bar -->
-    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--ink-muted)]">
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--tm-stone)]/50 font-light">
       <p>
         &copy; {currentYear} Halaqoh. Berakar dari amanah pendidikan pengajian santri.
       </p>
-      <div class="flex items-center gap-4">
-        <a href="#top" class="hover:text-[var(--ink)] font-semibold transition-colors flex items-center gap-1">
-          <span>Kembali ke Atas</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-          </svg>
-        </a>
-      </div>
+      <a href="#top" class="hover:text-white transition-colors flex items-center gap-2 uppercase tracking-[0.16em] text-[0.6875rem]">
+        <span>Kembali ke Atas</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </a>
     </div>
   </div>
 </footer>

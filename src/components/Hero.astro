@@ -1,65 +1,61 @@
 ---
-import LiveSessionCard from './LiveSessionCard';
+// Luxury Video Hero component inspired by Tengile MalaMala Collection
 ---
 
-<section class="hero-section py-12 sm:py-16 md:py-20 relative" id="top">
-  <div class="container grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-center">
-    <div class="hero-content flex flex-col gap-6">
-      <div>
-        <span class="badge-tag">
-          Sistem Pengajian TPA, TPQ & Masjid
-        </span>
-      </div>
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16" id="top">
+  <!-- Background Video Container -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="auto"
+      class="w-full h-full object-cover object-center scale-105 filter brightness-[0.6] contrast-[1.1]"
+      src="/video.mp4"
+    >
+      <track kind="captions" srclang="id" label="Bahasa Indonesia" />
+    </video>
+    <!-- Multi-layered atmospheric vignette overlays -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--tm-dark)] via-transparent to-[var(--tm-dark)]/60 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-radial from-transparent via-[var(--tm-dark)]/40 to-[var(--tm-dark)]/90 pointer-events-none"></div>
+  </div>
 
-      <h1 class="hero-title text-[clamp(2.3rem,4.5vw,3.5rem)] leading-[1.1] text-[var(--ink)]">
-        Catat Kehadiran & Setoran Ngaji. <span class="highlight-text relative inline-block text-[var(--forest)]">
-          Rapi, Cepat,
-          <span class="absolute -left-0.5 -right-0.5 bottom-1 h-3.5 bg-[var(--hl-olive)] -z-10 rounded-sm -rotate-[0.8deg]"></span>
-        </span> dan Transparan.
-      </h1>
+  <!-- Content Layer -->
+  <div class="container-tm relative z-10 text-center flex flex-col items-center max-w-5xl mx-auto px-4">
+    <!-- Category Suptitle -->
+    <span class="suptitle-tm animate-fade-in tracking-[0.25em] mb-4">
+      Pengajian &bull; Setoran &bull; Transparansi
+    </span>
 
-      <p class="hero-description text-[1.125rem] leading-[1.65] text-[var(--ink-secondary)] max-w-[580px]">
-        Aplikasi pencatatan Iqro dan Al-Qur'an santri yang tetap bekerja lancar meski tanpa internet di dalam masjid. Bagikan progres anak langsung ke orang tua tanpa perlu repot membuat akun atau mengingat kata sandi.
-      </p>
+    <!-- Grand High-Fashion Serif Headline -->
+    <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-[var(--tm-stone)] leading-[1.02] tracking-[-0.01em] uppercase mb-8 max-w-4xl">
+      Kedalaman Bacaan &amp;<br class="hidden sm:inline" />
+      <span class="italic font-light text-[var(--tm-white)]">Ketertiban Santri</span>
+    </h1>
 
-      <div class="hero-cta-group flex flex-wrap gap-4 items-center mt-2">
-        <a href="#peran" class="btn btn-primary btn-lg min-h-[48px]" id="btn-hero-explore">
-          Jelajahi Antarmuka
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-        <a href="#fitur" class="btn btn-secondary btn-lg min-h-[48px]">
-          Pelajari Fitur
-        </a>
-      </div>
+    <!-- Editorial Subtitle -->
+    <p class="text-base sm:text-lg md:text-xl text-[var(--tm-stone)]/90 font-sans max-w-2xl mx-auto font-light leading-relaxed mb-10 tracking-normal">
+      Sebuah ikhtiar menghadirkan pencatatan presensi dan setoran santri yang khusyuk, tertib, dan transparan bagi setiap orang tua: bekerja luring tanpa ketergantungan sinyal internet.
+    </p>
 
-      <div class="hero-pills-row flex flex-wrap gap-3 mt-4 pt-5 border-t border-dashed border-[var(--border-soft)]">
-        <div class="trust-pill inline-flex items-center gap-1.5 text-[0.825rem] font-medium text-[var(--ink-muted)]">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span>Offline-First (Tanpa Internet)</span>
-        </div>
-        <div class="trust-pill inline-flex items-center gap-1.5 text-[0.825rem] font-medium text-[var(--ink-muted)]">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span>Orang Tua Tanpa Perlu Login</span>
-        </div>
-        <div class="trust-pill inline-flex items-center gap-1.5 text-[0.825rem] font-medium text-[var(--ink-muted)]">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-          <span>Laporan PDF 1-Klik Siap Cetak</span>
-        </div>
-      </div>
+    <!-- Call to Actions -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+      <a href="#demo" class="btn-pill btn-pill-light w-full sm:w-auto text-xs tracking-[0.16em]">
+        <span>Jelajahi Simulasi</span>
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+      <a href="#pilar" class="btn-pill btn-pill-outline w-full sm:w-auto text-xs tracking-[0.16em]">
+        <span>Tiga Pilar Akses</span>
+      </a>
     </div>
 
-    <!-- Live Interactive Session Island -->
-    <div class="hero-visual-wrapper">
-      <LiveSessionCard client:load />
+    <!-- Video Ambient Indicator -->
+    <div class="mt-16 sm:mt-24 flex items-center gap-3 text-[0.6875rem] uppercase tracking-[0.2em] text-[var(--tm-stone)]/70 font-sans">
+      <span class="w-2 h-2 rounded-full bg-[var(--tm-accent-gold)] animate-pulse"></span>
+      <span>Suasana Musholla &amp; Halaqoh</span>
     </div>
   </div>
 </section>

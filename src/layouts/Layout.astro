@@ -62,9 +62,9 @@ const jsonLd = {
     <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- Mobile Theme Colors -->
-    <meta name="theme-color" content="#f4eee1" />
+    <meta name="theme-color" content="#192118" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Halaqoh" />
 
     <!-- OpenGraph / Social Media -->
@@ -88,7 +88,7 @@ const jsonLd = {
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="antialiased selection:bg-[var(--hl-olive)] selection:text-[var(--ink)]">
+  <body class="bg-[var(--tm-dark)] text-[var(--tm-stone)] antialiased selection:bg-[var(--tm-accent-gold)] selection:text-[var(--tm-dark)]">
     <Header />
     <main id="main-content">
       <slot />
