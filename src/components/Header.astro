@@ -1,108 +1,90 @@
 ---
-// Minimalist luxury header inspired by Tengile MalaMala Collection
+// Header navigasi Halaqoh dengan logo resmi favicon.png di pojok kiri atas
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 bg-[var(--tm-dark)]/85 backdrop-blur-md border-b border-white/10" id="site-header">
-  <div class="container-tm flex items-center justify-between">
-    <!-- Left: Direct Action Link -->
-    <div class="flex items-center gap-6">
-      <a href="#demo" class="text-xs uppercase tracking-[0.16em] font-medium text-[var(--tm-stone)] hover:text-white transition-colors flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-[var(--tm-accent-gold)]"></span>
-        <span>Simulasi Sistem</span>
+<header class="site-header" id="top">
+  <div class="container site-header__inner">
+    <a href="#top" class="brand" aria-label="Beranda Halaqoh">
+      <span class="brand-logo" aria-hidden="true">
+        <img src="/favicon.png" alt="Halaqoh" width="396" height="134" loading="eager" />
+      </span>
+      <span class="sr-only">Halaqoh</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navigasi Utama">
+      <a href="#demo">Demo Interaktif</a>
+      <a href="#peran">Alur &amp; Peran</a>
+      <a href="#offline">Dukungan Luring</a>
+      <a href="#fitur">Fitur Lengkap</a>
+      <a href="#faq">Tanya Jawab</a>
+    </nav>
+
+    <div class="site-header__cta">
+      <a href="mailto:dundunmaju@gmail.com" class="btn btn-outline" style="min-height: 40px; padding: 0 16px; font-size: 0.9375rem;">
+        Hubungi Pengembang
       </a>
     </div>
 
-    <!-- Center: Brand Wordmark -->
-    <a href="#top" class="text-center group" aria-label="Beranda Halaqoh">
-      <span class="block font-serif text-2xl md:text-3xl font-normal tracking-[0.22em] uppercase text-[var(--tm-stone)] group-hover:text-white transition-colors">
-        Halaqoh
-      </span>
-      <span class="block text-[0.625rem] uppercase tracking-[0.25em] text-[var(--tm-accent-gold)] font-sans -mt-0.5">
-        Manajemen Santri
-      </span>
-    </a>
-
-    <!-- Right: Menu Button -->
-    <div class="flex items-center gap-4">
-      <button
-        type="button"
-        id="menu-toggle-btn"
-        class="text-xs uppercase tracking-[0.16em] font-medium text-[var(--tm-stone)] hover:text-white px-4 py-2 rounded-full border border-white/15 hover:border-white/30 transition-all"
-        aria-expanded="false"
-        aria-controls="mobile-menu-drawer"
-      >
-        Menu
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- Fullscreen Editorial Drawer Menu -->
-<div id="mobile-menu-drawer" class="fixed inset-0 z-50 bg-[var(--tm-dark)]/98 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 flex flex-col justify-between p-8 md:p-16">
-  <div class="flex items-center justify-between border-b border-white/10 pb-6">
-    <span class="font-serif text-2xl tracking-[0.2em] uppercase text-[var(--tm-stone)]">Halaqoh</span>
-    <button type="button" id="menu-close-btn" class="text-xs uppercase tracking-[0.2em] text-[var(--tm-accent-gold)] hover:text-white transition-colors">
-      Tutup &#x2715;
+    <button
+      type="button"
+      class="menu-toggle"
+      id="menu-toggle-btn"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Buka menu navigasi"
+    >
+      <span class="menu-toggle__bars" aria-hidden="true"></span>
+      <span>Menu</span>
     </button>
   </div>
 
-  <nav class="my-auto py-12">
-    <ul class="flex flex-col gap-6 md:gap-8 max-w-xl">
-      <li>
-        <a href="#manifesto" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
-          01. Filosofi & Keheningan
-        </a>
-      </li>
-      <li>
-        <a href="#pilar" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
-          02. Tiga Pilar Akses
-        </a>
-      </li>
-      <li>
-        <a href="#demo" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
-          03. Simulasi & Sesi Shalat
-        </a>
-      </li>
-      <li>
-        <a href="#spesifikasi" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
-          04. Rekayasa Offline & Keamanan
-        </a>
-      </li>
-      <li>
-        <a href="#faq" class="menu-nav-link font-serif text-3xl md:text-5xl text-[var(--tm-stone)] hover:text-[var(--tm-accent-gold)] transition-colors block">
-          05. Tanya Jawab (FAQ)
-        </a>
-      </li>
-    </ul>
+  <nav id="mobile-nav" class="mobile-menu" aria-label="Menu Ponsel" hidden>
+    <div class="container">
+      <ul>
+        <li><a href="#demo" class="mobile-link">Demo Interaktif</a></li>
+        <li><a href="#peran" class="mobile-link">Alur &amp; Peran</a></li>
+        <li><a href="#offline" class="mobile-link">Dukungan Luring</a></li>
+        <li><a href="#fitur" class="mobile-link">Fitur Lengkap</a></li>
+        <li><a href="#faq" class="mobile-link">Tanya Jawab</a></li>
+      </ul>
+      <a href="mailto:dundunmaju@gmail.com" class="btn btn-block" style="margin-top: 12px; margin-bottom: 12px;">
+        Hubungi Pengembang
+      </a>
+    </div>
   </nav>
-
-  <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--tm-ink-muted)]">
-    <p>Aplikasi Web Progresif (PWA) Offline-First untuk Pengajian Santri.</p>
-    <p>Desain Terinspirasi Suasana MalaMala Tengile Retreat.</p>
-  </div>
-</div>
+</header>
 
 <script>
   const toggleBtn = document.getElementById('menu-toggle-btn');
-  const closeBtn = document.getElementById('menu-close-btn');
-  const drawer = document.getElementById('mobile-menu-drawer');
-  const navLinks = document.querySelectorAll('.menu-nav-link');
+  const mobileNav = document.getElementById('mobile-nav');
 
-  const openMenu = () => {
-    drawer?.classList.remove('opacity-0', 'pointer-events-none');
-    drawer?.classList.add('opacity-100', 'pointer-events-auto');
-    toggleBtn?.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  };
+  if (toggleBtn && mobileNav) {
+    const setOpen = (open: boolean) => {
+      toggleBtn.setAttribute('aria-expanded', String(open));
+      toggleBtn.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+      if (open) {
+        mobileNav.removeAttribute('hidden');
+      } else {
+        mobileNav.setAttribute('hidden', '');
+      }
+    };
 
-  const closeMenu = () => {
-    drawer?.classList.add('opacity-0', 'pointer-events-none');
-    drawer?.classList.remove('opacity-100', 'pointer-events-auto');
-    toggleBtn?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  };
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
 
-  toggleBtn?.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  navLinks.forEach(link => link.addEventListener('click', closeMenu));
+    // Tutup saat tautan diklik
+    mobileNav.querySelectorAll('.mobile-link').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    // Tutup via tombol Escape
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggleBtn.focus();
+      }
+    });
+  }
 </script>

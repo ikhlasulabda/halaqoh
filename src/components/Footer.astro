@@ -1,84 +1,37 @@
 ---
-// Minimalist luxury footer inspired by Tengile MalaMala
-const currentYear = 2026;
+// Footer Halaqoh: Minimalis & Berwibawa sesuai DESIGN.md
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-[var(--tm-dark)] border-t border-white/10 pt-20 pb-12">
-  <div class="container-tm">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
-      
-      <!-- Brand & Mission -->
-      <div class="md:col-span-5 flex flex-col items-start gap-6">
-        <a href="#top" class="group" aria-label="Beranda Halaqoh">
-          <span class="font-serif text-3xl font-normal tracking-[0.22em] uppercase text-white block">
-            Halaqoh
-          </span>
-          <span class="text-[0.625rem] uppercase tracking-[0.25em] text-[var(--tm-accent-gold)] font-sans">
-            Manajemen Santri &amp; Pengajian
-          </span>
-        </a>
-        <p class="text-xs sm:text-sm text-[var(--tm-stone)]/70 font-light leading-relaxed max-w-sm">
-          Platform manajemen presensi dan setoran hafalan santri ramah luring (offline-first). Dirancang khusus untuk musholla, TPA, dan majelis ilmu yang mengedepankan ketertiban administrasi serta ketenangan hati para orang tua.
-        </p>
-        <div class="text-[0.6875rem] uppercase tracking-[0.18em] text-[var(--tm-accent-gold)]">
-          Beroperasi Mandiri Tanpa Ketergantungan Internet
-        </div>
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div>
+      <a href="#top" class="brand" aria-label="Kembali ke atas">
+        <span class="brand-logo" style="--logo-h: 30px;" aria-hidden="true">
+          <img src="/favicon.png" alt="Halaqoh" width="396" height="134" loading="lazy" />
+        </span>
+        <span class="sr-only">Halaqoh</span>
+      </a>
+      <div class="site-footer__meta" style="margin-top: 6px; font-size: 0.875rem;">
+        Pencatatan presensi dan setoran santri luring (offline-first).
       </div>
-
-      <!-- Navigation Links -->
-      <div class="md:col-span-3">
-        <h4 class="text-xs uppercase tracking-[0.2em] text-white/90 font-medium mb-6">
-          Navigasi Halaman
-        </h4>
-        <ul class="flex flex-col gap-3 text-xs uppercase tracking-[0.14em] text-[var(--tm-stone)]/70 font-light">
-          <li><a href="#top" class="hover:text-white transition-colors">01. Beranda</a></li>
-          <li><a href="#manifesto" class="hover:text-white transition-colors">02. Filosofi &amp; Manifesto</a></li>
-          <li><a href="#pilar" class="hover:text-white transition-colors">03. Tiga Pilar Akses</a></li>
-          <li><a href="#demo" class="hover:text-white transition-colors">04. Simulasi Sistem</a></li>
-          <li><a href="#spesifikasi" class="hover:text-white transition-colors">05. Spesifikasi Teknis</a></li>
-          <li><a href="#keamanan" class="hover:text-white transition-colors">06. Keamanan &amp; Privasi</a></li>
-          <li><a href="#faq" class="hover:text-white transition-colors">07. Tanya Jawab (FAQ)</a></li>
-        </ul>
-      </div>
-
-      <!-- Architectural Highlights -->
-      <div class="md:col-span-4">
-        <h4 class="text-xs uppercase tracking-[0.2em] text-white/90 font-medium mb-6">
-          Standar Rekayasa
-        </h4>
-        <ul class="flex flex-col gap-3.5 text-xs text-[var(--tm-stone)]/70 font-light leading-relaxed">
-          <li>
-            <strong class="text-white font-medium block">Offline-First PWA:</strong>
-            Serwist Service Worker &amp; IndexedDB lokal peramban.
-          </li>
-          <li>
-            <strong class="text-white font-medium block">Native PDF 1.4:</strong>
-            Generator dokumen rekap A4 Landscape murni tanpa library eksternal.
-          </li>
-          <li>
-            <strong class="text-white font-medium block">Kredensial &amp; Sesi:</strong>
-            Bcrypt hash (cost 10), HTTP-only Secure SameSite cookies.
-          </li>
-          <li>
-            <strong class="text-white font-medium block">Akses Wali Santri:</strong>
-            Slug acak kriptografis tanpa login terlindung dari bot perayap Google.
-          </li>
-        </ul>
-      </div>
-
     </div>
 
-    <!-- Bottom Bar -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--tm-stone)]/50 font-light">
-      <p>
-        &copy; {currentYear} Halaqoh. Berakar dari amanah pendidikan pengajian santri.
-      </p>
-      <a href="#top" class="hover:text-white transition-colors flex items-center gap-2 uppercase tracking-[0.16em] text-[0.6875rem]">
-        <span>Kembali ke Atas</span>
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
-      </a>
+    <nav aria-label="Navigasi Kaki">
+      <ul>
+        <li><a href="#top">Beranda</a></li>
+        <li><a href="#demo">Demo iPhone</a></li>
+        <li><a href="#peran">Alur Peran</a></li>
+        <li><a href="#offline">Sistem Luring</a></li>
+        <li><a href="#fitur">Indeks Fitur</a></li>
+        <li><a href="#faq">Tanya Jawab</a></li>
+        <li><a href="mailto:dundunmaju@gmail.com">Kontak Pengembang</a></li>
+      </ul>
+    </nav>
+
+    <div style="font-size: 0.8125rem; color: var(--muted); text-align: right;">
+      <div>&copy; {currentYear} Halaqoh.</div>
+      <div>Dirancang untuk ketenangan hati guru dan orang tua.</div>
     </div>
   </div>
 </footer>

@@ -2,8 +2,6 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import ToastNotice from '../components/ToastNotice';
-import SmoothScroll from '../components/SmoothScroll.astro';
 
 interface Props {
   title?: string;
@@ -12,8 +10,8 @@ interface Props {
 }
 
 const {
-  title = "Halaqoh: Manajemen Pengajian & Setoran Santri Modern",
-  description = "Aplikasi pencatatan absensi dan setoran hafalan santri (Iqro dan Al-Qur'an) yang bekerja luring (offline-first). Rekap transparan langsung ke orang tua tanpa login.",
+  title = "Halaqoh: Pencatatan Absensi & Setoran Santri Modern",
+  description = "Aplikasi pencatatan absensi dan setoran hafalan santri (Iqro dan Al-Qur'an) yang bekerja luring (offline-first). Rekapitulasi transparan langsung ke orang tua tanpa kata sandi.",
   canonicalUrl = "https://halaqoh.app"
 } = Astro.props;
 
@@ -35,7 +33,7 @@ const jsonLd = {
   },
   "featureList": [
     "Pencatatan Offline-First via IndexedDB",
-    "Kurikulum Iqro 1-6 dan 114 Surat Al-Qur'an",
+    "Kurikulum Iqro Jilid 1 sampai 6 dan 114 Surat Al-Qur'an",
     "Deteksi Otomatis 5 Sesi Shalat (Subuh, Zuhur, Ashar, Magrib, Isya)",
     "Tautan Akses Orang Tua Tanpa Kata Sandi",
     "Generator Laporan PDF Siap Cetak A4 Landscape",
@@ -52,7 +50,7 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content="halaqoh, aplikasi ngaji, manajemen tpa, setoran iqro, absensi santri, aplikasi pengajian musholla, pwa santri" />
-    <meta name="author" content="Halaqoh Team" />
+    <meta name="author" content="Tim Halaqoh" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalUrl} />
 
@@ -62,9 +60,9 @@ const jsonLd = {
     <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- Mobile Theme Colors -->
-    <meta name="theme-color" content="#192118" />
+    <meta name="theme-color" content="#f3ecd8" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Halaqoh" />
 
     <!-- OpenGraph / Social Media -->
@@ -88,14 +86,46 @@ const jsonLd = {
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="bg-[var(--tm-dark)] text-[var(--tm-stone)] antialiased selection:bg-[var(--tm-accent-gold)] selection:text-[var(--tm-dark)]">
+  <body>
+    <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
     <Header />
     <main id="main-content">
       <slot />
     </main>
     <Footer />
 
-    <ToastNotice client:idle />
-    <SmoothScroll />
+    <script>
+      // Progressive enhancement: reveal on scroll without layout shift
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('js-reveal');
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+      }
+
+      // Header border on scroll
+      const header = document.querySelector('.site-header');
+      if (header) {
+        const toggleHeaderScrolled = () => {
+          if (window.scrollY > 20) {
+            header.setAttribute('data-scrolled', 'true');
+          } else {
+            header.removeAttribute('data-scrolled');
+          }
+        };
+        window.addEventListener('scroll', toggleHeaderScrolled, { passive: true });
+        toggleHeaderScrolled();
+      }
+    </script>
   </body>
 </html>

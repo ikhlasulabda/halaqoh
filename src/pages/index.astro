@@ -1,41 +1,74 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import EditorialManifesto from '../components/EditorialManifesto.astro';
-import AsymmetricStory from '../components/AsymmetricStory.astro';
-import SanctuaryPillars from '../components/SanctuaryPillars.astro';
-import RoleWalkthrough from '../components/RoleWalkthrough';
-import FeaturesGrid from '../components/FeaturesGrid.astro';
-import SecurityPrivacy from '../components/SecurityPrivacy.astro';
-import FaqAccordion from '../components/FaqAccordion';
-import FinalCta from '../components/FinalCta.astro';
+import IphoneDemo from '../components/IphoneDemo';
+import RoleWorkflow from '../components/RoleWorkflow.astro';
+import OfflineSection from '../components/OfflineSection.astro';
+import Features from '../components/Features.astro';
+import FaqSection from '../components/FaqSection.astro';
 ---
 
 <Layout>
-  <!-- Full-bleed Looping Video Hero -->
+  <!-- Hero Section -->
   <Hero />
 
-  <!-- Editorial Grand Manifesto Statement -->
-  <EditorialManifesto />
+  <!-- Interactive iPhone 17 Pro Showcase Section -->
+  <section class="section demo" id="demo" aria-labelledby="demo-heading">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <span class="app-sample-tag">Simulasi iPhone 17 Pro</span>
+          <span class="muted" style="font-size: 0.875rem;">Uji Coba Langsung</span>
+        </div>
+        <h2 id="demo-heading" class="h2">
+          Coba langsung cara kerja Halaqoh di genggaman ponsel.
+        </h2>
+        <p class="lead">
+          Jelajahi empat layar utama aplikasi di dalam kerangka iPhone 17 Pro berikut. Ketuk tab, simpan rekaman absensi santri, periksa kalender, dan uji ketahanan saat mode luring diaktifkan.
+        </p>
+      </div>
 
-  <!-- Asymmetric Double Image Layout (Rehal & Arches) -->
-  <AsymmetricStory />
+      <IphoneDemo client:visible />
+    </div>
+  </section>
 
-  <!-- Three Pillars of Access (Action Cards) -->
-  <SanctuaryPillars />
+  <!-- Tiga Peran Pengguna (Ledger Style) -->
+  <RoleWorkflow />
 
-  <!-- Interactive Three-Role System Walkthrough -->
-  <RoleWalkthrough client:visible />
+  <!-- Arsitektur Luring / Offline-First (Inverted Ink Section) -->
+  <OfflineSection />
 
-  <!-- Technical Engineering Pillars (Hairline Grid) -->
-  <FeaturesGrid />
+  <!-- Indeks Fitur Lengkap -->
+  <Features />
 
-  <!-- Data Security & Child Privacy Standards -->
-  <SecurityPrivacy />
+  <!-- Tanya Jawab 5 Pertanyaan Krusial -->
+  <FaqSection />
 
-  <!-- Minimalist Editorial FAQ -->
-  <FaqAccordion client:visible />
-
-  <!-- Full-bleed Sanctuary Architectural Photo Break & Final Invitation -->
-  <FinalCta />
+  <!-- Penutup & Undangan Diskusi -->
+  <section class="section closing" aria-labelledby="closing-heading">
+    <div class="container closing__inner" data-reveal>
+      <span class="app-sample-tag">Implementasi Musholla &amp; TPA</span>
+      <h2 id="closing-heading" class="h2" style="max-width: 22ch;">
+        Ingin menerapkan sistem pencatatan ini di pengajian Anda?
+      </h2>
+      <p class="lead">
+        Halaqoh dirancang agar siap digunakan oleh komunitas pengajian mana pun tanpa biaya langganan yang membebani. Hubungi pengembang untuk konsultasi penyiapan dan penerapan.
+      </p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px;">
+        <a href="mailto:dundunmaju@gmail.com" class="btn">
+          <span>Kirim Pesan ke Pengembang</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          </svg>
+        </a>
+        <a href="#demo" class="btn btn-outline">
+          <span>Uji Demo Sekali Lagi</span>
+        </a>
+      </div>
+      <div class="closing__email">
+        Surel langsung: <a href="mailto:dundunmaju@gmail.com">dundunmaju@gmail.com</a>
+      </div>
+    </div>
+  </section>
 </Layout>

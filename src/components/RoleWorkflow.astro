@@ -1,0 +1,79 @@
+---
+// Alur dan Tiga Peran Pengguna dalam Halaqoh
+---
+
+<section class="section rule-top" id="peran" aria-labelledby="peran-heading">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <span class="app-sample-tag">Pembagian Peran</span>
+        <span class="muted" style="font-size: 0.875rem;">Hak Akses Terpisah</span>
+      </div>
+      <h2 id="peran-heading" class="h2">
+        Tiga peran pengguna dengan hak akses yang terukur.
+      </h2>
+      <p class="lead">
+        Halaqoh memisahkan kewenangan secara tegas di tingkat server. Guru fokus pada kegiatan mengajar, pengurus menjaga integritas data, dan wali santri memantau progres tanpa hambatan otentikasi.
+      </p>
+    </div>
+
+    <div class="ledger">
+      {/* Baris 1: Guru Pengajar */}
+      <div class="ledger__row" data-reveal>
+        <div class="ledger__who">
+          <span style="font-size: 0.875rem; font-weight: 700; color: var(--session-green); text-transform: uppercase; letter-spacing: 0.05em;">
+            Peran 01
+          </span>
+          <h3 class="h3">Guru &amp; Ustadz Pengajar</h3>
+          <p class="ledger__access">Akses antarmuka: Absen, Kalender, Riwayat, Statistik</p>
+        </div>
+        <ul class="ledger__list">
+          <li>Mencatat kehadiran santri saat sesi berlangsung tanpa memerlukan koneksi internet.</li>
+          <li>Memilih materi Iqro jilid 1 sampai 6 beserta rentang halaman awal dan akhir.</li>
+          <li>Memilih materi Al-Qur'an dari 114 surat dengan validasi jumlah ayat atau nomor halaman mushaf.</li>
+          <li>Mengkoreksi atau menghapus rekaman absensi harian jika terjadi kesalahan input santri.</li>
+          <li>Melihat kalender jadwal rutin dan mengecek hari libur yang ditetapkan pengurus.</li>
+          <li>Menyalin tautan profil santri untuk dibagikan secara langsung ke WhatsApp orang tua.</li>
+        </ul>
+      </div>
+
+      {/* Baris 2: Pengurus / Administrator */}
+      <div class="ledger__row" data-reveal>
+        <div class="ledger__who">
+          <span style="font-size: 0.875rem; font-weight: 700; color: var(--session-green); text-transform: uppercase; letter-spacing: 0.05em;">
+            Peran 02
+          </span>
+          <h3 class="h3">Pengurus &amp; Administrator</h3>
+          <p class="ledger__access">Akses antarmuka: Seluruh rute aplikasi ditambah dasbor /admin</p>
+        </div>
+        <ul class="ledger__list">
+          <li>Mengelola data master santri (tambah santri baru, ganti nama, regenerasi slug tautan).</li>
+          <li>Mengelola akun guru (buat akun, atur status aktif, reset kata sandi pengajar).</li>
+          <li>Mengatur jadwal rutin mingguan (misal Selasa, Rabu, Jumat pada sesi Magrib).</li>
+          <li>Menetapkan pengecualian kalender (menandai hari libur nasional atau jadwal tambahan).</li>
+          <li>Mengunduh cadangan lengkap database JSON utuh dan ekspor CSV aman anti-formula injection.</li>
+          <li>Memulihkan data (restore) secara atomik dari berkas JSON cadangan dengan konfirmasi kata kunci.</li>
+        </ul>
+      </div>
+
+      {/* Baris 3: Wali Santri */}
+      <div class="ledger__row" data-reveal>
+        <div class="ledger__who">
+          <span style="font-size: 0.875rem; font-weight: 700; color: var(--session-green); text-transform: uppercase; letter-spacing: 0.05em;">
+            Peran 03
+          </span>
+          <h3 class="h3">Orang Tua &amp; Wali Santri</h3>
+          <p class="ledger__access">Akses antarmuka: Halaman publik santri via slug acak unik (/[slug])</p>
+        </div>
+        <ul class="ledger__list">
+          <li>Membuka laporan langsung lewat peramban ponsel tanpa login atau memasukkan kata sandi.</li>
+          <li>Melihat tabel rekonsiliasi 5 sesi shalat per hari pada bulan berjalan dan bulan sebelumnya.</li>
+          <li>Memantau rincian capaian bacaan anak (jilid Iqro, surat Al-Qur'an, dan rentang ayat).</li>
+          <li>Mendukung tautan gabungan multi-santri (kakak-adik) dengan tab pengalih dalam satu layar.</li>
+          <li>Mengunduh berkas laporan bulanan resmi format PDF 1.4 landscape siap cetak.</li>
+          <li>Data terlindungi dari indeks mesin pencari Google (tag noindex dan pembatas laju per IP).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

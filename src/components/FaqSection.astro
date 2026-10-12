@@ -1,0 +1,92 @@
+---
+// FAQ Halaqoh: 5 Pertanyaan Krusial & Terverifikasi
+---
+
+<section class="section rule-top" id="faq" aria-labelledby="faq-heading">
+  <div class="container faq__grid">
+    <div class="faq__head" data-reveal>
+      <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px;">
+        <span class="app-sample-tag">Tanya Jawab</span>
+        <span class="muted" style="font-size: 0.875rem;">Penjelasan Sistem</span>
+      </div>
+      <h2 id="faq-heading" class="h2">
+        Pertanyaan umum seputar operasional Halaqoh.
+      </h2>
+      <p class="lead" style="margin-top: 14px;">
+        Jawaban langsung mengenai alur kerja aplikasi, keamanan data anak, dan ketahanan sistem saat mengaji.
+      </p>
+      <div style="margin-top: 24px;">
+        <a href="mailto:dundunmaju@gmail.com" class="btn btn-outline">
+          Tanyakan Hal Lain ke Pengembang
+        </a>
+      </div>
+    </div>
+
+    <div class="faq__list" data-reveal>
+      {/* Tanya 1: Akses Orang Tua */}
+      <details class="faq__item">
+        <summary>
+          <span>Apakah orang tua santri harus mendaftar akun dan membuat kata sandi?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__answer">
+          <p>
+            Tidak. Orang tua tidak perlu membuat akun, mengunduh aplikasi tambahan, atau mengingat kata sandi. Guru cukup membagikan tautan acak unik santri (contoh: /smith-7xK9p2) via WhatsApp. Saat tautan diklik, halaman rekap langsung terbuka di peramban ponsel. Jika orang tua memiliki lebih dari satu anak, guru dapat menggabungkannya dalam satu tautan dengan tab pengalih antar anak.
+          </p>
+        </div>
+      </details>
+
+      {/* Tanya 2: Masalah Jaringan */}
+      <details class="faq__item">
+        <summary>
+          <span>Bagaimana jika jaringan internet di musholla atau masjid terputus saat jam mengaji?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__answer">
+          <p>
+            Proses pencatatan tetap berjalan normal. Berkat arsitektur PWA offline-first dan IndexedDB lokal, formulir absensi tetap dapat dibuka dan disimpan tanpa koneksi internet. Data ditampung di antrean memori ponsel guru dan otomatis disinkronkan ke server begitu perangkat kembali mendapatkan sinyal WiFi atau data seluler.
+          </p>
+        </div>
+      </details>
+
+      {/* Tanya 3: Privasi Google */}
+      <details class="faq__item">
+        <summary>
+          <span>Apakah nama santri dan riwayat setoran anak dapat dicari orang asing di Google?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__answer">
+          <p>
+            Tidak. Seluruh halaman profil santri diproteksi dengan header keamanan ketat dan instruksi anti-perayapan robot mesin pencari (robots.txt disallow dan meta tag noindex, nofollow). Mesin pencari publik seperti Google tidak akan mengindeks nama anak maupun catatan capaian mengaji mereka. Selain itu, akses halaman publik diproteksi pembatas laju request per alamat IP.
+          </p>
+        </div>
+      </details>
+
+      {/* Tanya 4: Multi-Catatan */}
+      <details class="faq__item">
+        <summary>
+          <span>Apakah seorang anak dapat dicatat membaca Iqro sekaligus menyetorkan surat dalam satu sesi?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__answer">
+          <p>
+            Bisa. Basis data Halaqoh mendukung multi-catatan dalam satu kehadiran sesi shalat. Guru dapat mencatat capaian Iqro anak terlebih dahulu, lalu pada sesi yang sama menambahkan entri setoran hafalan surat pendek tanpa menimpa catatan sebelumnya.
+          </p>
+        </div>
+      </details>
+
+      {/* Tanya 5: Cadangan Data */}
+      <details class="faq__item">
+        <summary>
+          <span>Bagaimana cara pengurus mengamankan atau memindahkan data jika ingin berganti pengelola?</span>
+          <span class="faq__icon" aria-hidden="true"></span>
+        </summary>
+        <div class="faq__answer">
+          <p>
+            Admin dapat mengunduh berkas cadangan mandiri kapan saja dari dasbor /admin. Berkas tersedia dalam format JSON utuh (mencakup seluruh santri, riwayat, dan aturan jadwal) serta format CSV per tabel yang disanitasi dari risiko injeksi formula lembar sebar. Data cadangan tersebut dapat dipulihkan secara instan ke server baru melalui fitur restore atomik.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>

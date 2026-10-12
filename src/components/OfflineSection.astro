@@ -1,0 +1,74 @@
+---
+// Mode Luring (Offline-First) Halaqoh
+---
+
+<section class="section offline" id="offline" aria-labelledby="offline-heading">
+  <div class="container offline__grid">
+    <div class="offline__intro" data-reveal>
+      <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 12px;">
+        <span class="app-sample-tag" style="background: transparent; color: var(--hl); border-color: var(--hl);">
+          Offline-First PWA
+        </span>
+        <span style="font-size: 0.875rem; color: var(--on-ink-muted);">Ketahanan Sinyal</span>
+      </div>
+
+      <h2 id="offline-heading" class="h2">
+        Tetap dapat mencatat saat sinyal musholla melemah atau padam.
+      </h2>
+
+      <p class="lead" style="margin-top: 18px;">
+        Musholla atau ruang kelas seringkali berada di area dengan penerimaan sinyal seluler yang tidak stabil. Halaqoh dirancang agar proses belajar-mengajar tidak pernah terhenti karena urusan jaringan.
+      </p>
+
+      <div class="offline__quote">
+        "Mode offline aktif. Entri absensi akan otomatis disimpan di memori HP dan disinkronkan saat kembali terhubung ke internet."
+      </div>
+
+      <div class="offline__limits">
+        <strong>Pemberitahuan Transparan:</strong> Halaman yang membutuhkan data terkini (seperti dasbor admin dan pembuatan backup) akan mengarahkan pengguna secara otomatis ke halaman absensi luring saat koneksi terputus.
+      </div>
+    </div>
+
+    <div class="offline__steps" data-reveal>
+      <div class="offline__step">
+        <span class="offline__step-num">01</span>
+        <div>
+          <h3>Prapemuatan Shell &amp; Cache Siswa</h3>
+          <p>
+            Service Worker Serwist menyimpan kerangka halaman absensi dan daftar santri aktif ke dalam memori perangkat. Halaman dapat dibuka seketika meski mode pesawat aktif.
+          </p>
+        </div>
+      </div>
+
+      <div class="offline__step">
+        <span class="offline__step-num">02</span>
+        <div>
+          <h3>Penyimpanan Antrean Lokal IndexedDB</h3>
+          <p>
+            Saat tombol simpan ditekan tanpa internet, formulir langsung dikosongkan untuk santri berikutnya dan data ditampung dalam object store <code>offline_queue</code> lokal peramban.
+          </p>
+        </div>
+      </div>
+
+      <div class="offline__step">
+        <span class="offline__step-num">03</span>
+        <div>
+          <h3>Indikator Status Antrean Terbuka</h3>
+          <p>
+            Aplikasi menampilkan jumlah data yang sedang menunggu giliran kirim di bagian atas layar guru, memberikan kepastian bahwa tidak ada catatan santri yang hilang.
+          </p>
+        </div>
+      </div>
+
+      <div class="offline__step">
+        <span class="offline__step-num">04</span>
+        <div>
+          <h3>Sinkronisasi Latar Belakang Otomatis</h3>
+          <p>
+            Begitu perangkat kembali menangkap sinyal WiFi atau paket data, sistem secara kronologis mengirim antrean ke server PostgreSQL Neon tanpa memerlukan muat ulang halaman.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
