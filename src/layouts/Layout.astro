@@ -7,12 +7,14 @@ interface Props {
   title?: string;
   description?: string;
   canonicalUrl?: string;
+  hideChrome?: boolean;
 }
 
 const {
-  title = "Halaqoh: Pencatatan Absensi & Setoran Santri Modern",
-  description = "Aplikasi pencatatan absensi dan setoran hafalan santri (Iqro dan Al-Qur'an) yang bekerja luring (offline-first). Rekapitulasi transparan langsung ke orang tua tanpa kata sandi.",
-  canonicalUrl = "https://halaqoh.app"
+  title = "Halaqoh — Coming Soon",
+  description = "Aplikasi pencatatan absensi dan setoran santri modern, luring (offline-first), dan transparan untuk TPA, TPQ, dan Pondok Pesantren. Segera hadir.",
+  canonicalUrl = "https://halaqoh.app",
+  hideChrome = false
 } = Astro.props;
 
 const siteName = "Halaqoh";
@@ -30,15 +32,7 @@ const jsonLd = {
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "IDR"
-  },
-  "featureList": [
-    "Pencatatan Offline-First via IndexedDB",
-    "Kurikulum Iqro Jilid 1 sampai 6 dan 114 Surat Al-Qur'an",
-    "Deteksi Otomatis 5 Sesi Shalat (Subuh, Zuhur, Ashar, Magrib, Isya)",
-    "Tautan Akses Orang Tua Tanpa Kata Sandi",
-    "Generator Laporan PDF Siap Cetak A4 Landscape",
-    "Pencadangan Data Mandiri Format JSON dan CSV"
-  ]
+  }
 };
 ---
 
@@ -60,7 +54,7 @@ const jsonLd = {
     <link rel="manifest" href="/manifest.webmanifest" />
 
     <!-- Mobile Theme Colors -->
-    <meta name="theme-color" content="#f3ecd8" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Halaqoh" />
@@ -86,46 +80,51 @@ const jsonLd = {
     <!-- Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body>
-    <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
-    <Header />
+  <body class={hideChrome ? "coming-soon-body" : undefined}>
+    {!hideChrome && (
+      <>
+        <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+        <Header />
+      </>
+    )}
     <main id="main-content">
       <slot />
     </main>
-    <Footer />
+    {!hideChrome && <Footer />}
 
-    <script>
-      // Progressive enhancement: reveal on scroll without layout shift
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-        document.documentElement.classList.add('js-reveal');
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-        );
+    {!hideChrome && (
+      <script>
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+          document.documentElement.classList.add('js-reveal');
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+          );
 
-        document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
-      }
+          document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+        }
 
-      // Header border on scroll
-      const header = document.querySelector('.site-header');
-      if (header) {
-        const toggleHeaderScrolled = () => {
-          if (window.scrollY > 20) {
-            header.setAttribute('data-scrolled', 'true');
-          } else {
-            header.removeAttribute('data-scrolled');
-          }
-        };
-        window.addEventListener('scroll', toggleHeaderScrolled, { passive: true });
-        toggleHeaderScrolled();
-      }
-    </script>
+        const header = document.querySelector('.site-header');
+        if (header) {
+          const toggleHeaderScrolled = () => {
+            if (window.scrollY > 20) {
+              header.setAttribute('data-scrolled', 'true');
+            } else {
+              header.removeAttribute('data-scrolled');
+            }
+          };
+          window.addEventListener('scroll', toggleHeaderScrolled, { passive: true });
+          toggleHeaderScrolled();
+        }
+      </script>
+    )}
   </body>
 </html>
+
