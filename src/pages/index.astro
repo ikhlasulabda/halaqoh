@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ContextContrast from '../components/ContextContrast.astro';
+import RoleWalkthrough from '../components/RoleWalkthrough';
+import FeaturesGrid from '../components/FeaturesGrid.astro';
+import Workflow from '../components/Workflow.astro';
+import SecurityPrivacy from '../components/SecurityPrivacy.astro';
+import FaqAccordion from '../components/FaqAccordion';
+import FinalCta from '../components/FinalCta.astro';
+---
+
+<Layout>
+  <Hero />
+  <ContextContrast />
+  <RoleWalkthrough client:visible />
+  <FeaturesGrid />
+  <Workflow />
+  <SecurityPrivacy />
+  <FaqAccordion client:visible />
+  <FinalCta />
+</Layout>

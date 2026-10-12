@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ToastNotice from '../components/ToastNotice';
+import SmoothScroll from '../components/SmoothScroll.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Halaqoh: Manajemen Pengajian & Setoran Santri Modern",
+  description = "Aplikasi pencatatan absensi dan setoran hafalan santri (Iqro dan Al-Qur'an) yang bekerja luring (offline-first). Rekap transparan langsung ke orang tua tanpa login.",
+  canonicalUrl = "https://halaqoh.app"
+} = Astro.props;
+
+const siteName = "Halaqoh";
+const ogImageUrl = "/og-image.png";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Halaqoh",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "All (Web, iOS, Android)",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "description": description,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IDR"
+  },
+  "featureList": [
+    "Pencatatan Offline-First via IndexedDB",
+    "Kurikulum Iqro 1-6 dan 114 Surat Al-Qur'an",
+    "Deteksi Otomatis 5 Sesi Shalat (Subuh, Zuhur, Ashar, Magrib, Isya)",
+    "Tautan Akses Orang Tua Tanpa Kata Sandi",
+    "Generator Laporan PDF Siap Cetak A4 Landscape",
+    "Pencadangan Data Mandiri Format JSON dan CSV"
+  ]
+};
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="halaqoh, aplikasi ngaji, manajemen tpa, setoran iqro, absensi santri, aplikasi pengajian musholla, pwa santri" />
+    <meta name="author" content="Halaqoh Team" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Favicon & Mobile Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Mobile Theme Colors -->
+    <meta name="theme-color" content="#f4eee1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Halaqoh" />
+
+    <!-- OpenGraph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="id_ID" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="antialiased selection:bg-[var(--hl-olive)] selection:text-[var(--ink)]">
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+
+    <ToastNotice client:idle />
+    <SmoothScroll />
+  </body>
+</html>

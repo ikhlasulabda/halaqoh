@@ -1,0 +1,73 @@
+---
+// Security & Privacy component based on verified code evidence
+const securityPoints = [
+  {
+    title: "Privasi Identitas Santri dari Mesin Pencari",
+    desc: "Seluruh halaman profil santri dilindungi instruksi anti-perayapan robot (noindex, nofollow). Nama dan riwayat capaian anak Anda tidak akan terindeks atau muncul dalam hasil pencarian Google.",
+    tag: "Perlindungan Data Anak"
+  },
+  {
+    title: "Tautan Acak Kriptografis Tanpa Paparan Data Sensitif",
+    desc: "Setiap profil santri menggunakan slug unik dengan 6 karakter acak kriptografis. Halaman publik hanya menampilkan rekap capaian tanpa membocorkan nomor kontak, alamat rumah, atau data wali.",
+    tag: "Akses Terisolasi"
+  },
+  {
+    title: "Keamanan Kata Sandi Berstandar Industri",
+    desc: "Kata sandi pengajar dan pengurus dienkripsi dengan algoritma bcrypt tingkat lanjut dengan perlindungan terhadap timing attack. Kata sandi tidak pernah disimpan dalam bentuk teks biasa.",
+    tag: "Enkripsi Kredensial"
+  },
+  {
+    title: "Proteksi Sesi Masuk & Cookie HTTP-Only",
+    desc: "Autentikasi menggunakan token acak 32-byte yang terisolasi dalam cookie httpOnly, Secure, dan SameSite. Hal ini melindungi akun staf dari upaya pencurian sesi oleh skrip berbahaya.",
+    tag: "Keamanan Sesi"
+  },
+  {
+    title: "Verifikasi Asal Permintaan & Anti-Brute Force",
+    desc: "Semua aksi simpan dan hapus diverifikasi asal permintaannya (strict same-origin) untuk menangkal CSRF. Sistem login juga otomatis mengunci percobaan tebak sandi yang berulang-ulang.",
+    tag: "Pertahanan Proaktif"
+  },
+  {
+    title: "Pembatas Laju Trafik Publik (Rate Limiting)",
+    desc: "Akses ke halaman publik santri dipagari pembatas laju per alamat IP untuk menjaga ketersediaan server dari lonjakan trafik tidak wajar dan percobaan pemindaian otomatis.",
+    tag: "Stabilitas Jaringan"
+  }
+];
+---
+
+<section id="keamanan" class="section-space bg-[var(--paper)] border-y border-[var(--border-soft)]">
+  <div class="container scroll-reveal">
+    <div class="section-head">
+      <span class="section-eyebrow">Keamanan & Privasi</span>
+      <h2 class="section-title">Privasi Santri Adalah Amanah Utama</h2>
+      <p class="section-subtitle">
+        Kami merancang arsitektur data dengan kepatuhan kode yang ketat untuk memastikan catatan ibadah dan tumbuh kembang santri aman dari paparan publik.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {securityPoints.map((item) => (
+        <div class="bg-[var(--cream)] border-2 border-[var(--border-strong)] rounded-[var(--radius-lg)] p-6 shadow-[var(--shadow-sm)] flex flex-col justify-between">
+          <div>
+            <div class="mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-[var(--radius-pill)] bg-[var(--forest-light)] text-[var(--forest)] border border-[var(--forest)]/20">
+                {item.tag}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold mb-2.5 text-[var(--ink)] leading-snug">
+              {item.title}
+            </h3>
+            <p class="text-sm text-[var(--ink-secondary)] leading-relaxed">
+              {item.desc}
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[var(--border-soft)] flex items-center gap-1.5 text-xs font-medium text-[var(--ink-muted)]">
+            <svg class="w-4 h-4 text-[var(--forest)] shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <span>Terverifikasi dalam implementasi sistem</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

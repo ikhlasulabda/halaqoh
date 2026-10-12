@@ -1,0 +1,22 @@
+{
+  "name": "Halaqoh - Manajemen Pengajian Santri",
+  "short_name": "Halaqoh",
+  "description": "Sistem pencatatan absensi dan setoran santri offline-first",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4eee1",
+  "theme_color": "#f4eee1",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
