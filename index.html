@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Halaqoh: Aplikasi Pencatatan Absensi & Setoran Murid</title>
+  <meta name="description" content="Aplikasi pencatatan absensi dan setoran hafalan murid. Rekapitulasi transparan bagi orang tua murid tanpa perlu akun." />
+  <meta name="keywords" content="halaqoh, ngaji, aplikasi ngaji, manajemen tpa, setoran iqro, absensi murid, aplikasi pengajian musholla, pwa murid, offline first" />
+  <meta name="author" content="Ikhlaashul Abda" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://halaqoh.app" />
+  <meta name="theme-color" content="#120f0c" />
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/png" href="/images/logo-with-bg.png" />
+  <link rel="apple-touch-icon" href="/images/logo-with-bg.png" />
+
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://halaqoh.app" />
+  <meta property="og:title" content="Halaqoh: Aplikasi Pencatatan Absensi & Setoran Murid" />
+  <meta property="og:description" content="Aplikasi pencatatan absensi dan setoran hafalan murid. Rekapitulasi transparan bagi orang tua murid tanpa perlu akun." />
+  <meta property="og:image" content="/images/typography-logo-with-bg.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Halaqoh: Aplikasi Pencatatan Absensi & Setoran Murid" />
+  <meta name="twitter:description" content="Aplikasi pencatatan absensi dan setoran hafalan murid. Rekapitulasi transparan bagi orang tua murid tanpa perlu akun." />
+  <meta name="twitter:image" content="/images/typography-logo-with-bg.png" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Halaqoh",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All (Web, iOS, Android)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "IDR"
+    },
+    "featureList": [
+      "Offline-first record keeping with IndexedDB",
+      "Curriculum support for Iqro 1-6 & 114 Surahs of the Holy Quran",
+      "Automatic 5 Islamic prayer prayer sessions detection",
+      "Passwordless parent access via unique secure slugs",
+      "Print-ready PDF report generator (A4 Landscape)",
+      "Secure JSON backup and sanitized CSV data export"
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts Preconnect & Bricolage Grotesque -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+
+  <!-- Design System & Styles -->
+  <link rel="stylesheet" href="/src/styles/index.css" />
+
+  <!-- Tally Widget Script -->
+  <script async src="https://tally.so/widgets/embed.js"></script>
+</head>
+<body id="top">
+
+  <!-- Sanctuary background layer -->
+  <div class="site-hanging-bg" id="siteHangingBg" aria-hidden="true">
+    <video autoplay muted loop playsinline class="site-bg-video" poster="/images/hero-bg.png">
+      <source src="/videos/sanctuary-bg.mp4" type="video/mp4" />
+      <source src="/videos/sanctuary-bg.webm" type="video/webm" />
+    </video>
+    <div class="site-bg-scrim"></div>
+  </div>
+
+  <!-- Hanging top navigation bar -->
+  <header class="navbar-hanging" id="navbar">
+    <a href="#top" class="nav-brand" aria-label="Halaqoh Beranda">
+      <img src="/images/typography-logo-no-bg.png" alt="Halaqoh" class="nav-logo-img" />
+    </a>
+
+    <nav aria-label="Navigasi Utama">
+      <ul class="nav-links-desktop">
+        <li><a href="#top" class="nav-link active" data-i18n="nav.home">Beranda</a></li>
+        <li><a href="#roles" class="nav-link" data-i18n="nav.roles">Alur Peran</a></li>
+        <li><a href="#curriculum" class="nav-link" data-i18n="nav.curriculum">Kapabilitas</a></li>
+        <li><a href="#offline" class="nav-link" data-i18n="nav.offline">Sistem Luring</a></li>
+        <li><a href="#faq" class="nav-link" data-i18n="nav.faq">Tanya Jawab</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <!-- Language Switcher -->
+      <div class="lang-toggle" role="group" aria-label="Pilih Bahasa">
+        <button type="button" class="lang-btn active" data-lang="id" aria-pressed="true">ID</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
+      <!-- Single Primary CTA (Tally Modal Trigger) -->
+      <button 
+        type="button" 
+        class="btn-luxury-cta" 
+        data-tally-open="WOGdZJ" 
+        data-tally-layout="modal" 
+        data-tally-width="640" 
+        data-i18n="nav.cta">
+        Request Demo
+      </button>
+
+      <!-- Mobile Hamburger Toggle (3 Horizontal Lines) -->
+      <button 
+        type="button" 
+        class="mobile-menu-toggle" 
+        id="mobileMenuToggle" 
+        aria-label="Buka Menu Navigasi" 
+        aria-expanded="false" 
+        aria-controls="mobileDrawer">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile navigation drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <ul class="mobile-drawer-links">
+      <li><a href="#top" class="mobile-drawer-link" data-i18n="nav.home">Beranda</a></li>
+      <li><a href="#roles" class="mobile-drawer-link" data-i18n="nav.roles">Alur Peran</a></li>
+      <li><a href="#curriculum" class="mobile-drawer-link" data-i18n="nav.curriculum">Kapabilitas</a></li>
+      <li><a href="#offline" class="mobile-drawer-link" data-i18n="nav.offline">Sistem Luring</a></li>
+      <li><a href="#faq" class="mobile-drawer-link" data-i18n="nav.faq">Tanya Jawab</a></li>
+    </ul>
+
+    <div class="mobile-drawer-footer">
+      <div class="lang-toggle" role="group" aria-label="Pilih Bahasa Mobile">
+        <button type="button" class="lang-btn active" data-lang="id">ID</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button 
+        type="button" 
+        class="btn-luxury-cta" 
+        data-tally-open="WOGdZJ" 
+        data-tally-layout="modal" 
+        data-tally-width="640" 
+        data-i18n="nav.cta">
+        Request Demo
+      </button>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <!-- Hero section -->
+    <section class="hero-first-fold" id="hero-initial">
+      <div class="hero-content">
+        <div class="hero-logo-wrapper">
+          <img src="/images/typography-logo-no-bg.png" alt="HALAQOH" class="hero-logo-img" />
+        </div>
+
+        <p class="hero-description" data-i18n="hero.desc">
+          Sistem pencatatan presensi dan setoran hafalan murid.
+        </p>
+
+        <div class="hero-cta-wrapper">
+          <button 
+            type="button" 
+            class="btn-luxury-cta btn-luxury-cta-hero" 
+            data-tally-open="WOGdZJ" 
+            data-tally-layout="modal" 
+            data-tally-width="640" 
+            data-i18n="hero.cta">
+            Request Demo
+          </button>
+        </div>
+      </div>
+
+      <a href="#overview" class="hero-scroll-cue" aria-label="Explore Features">
+        <span data-i18n="hero.scroll">Explore Features ↓</span>
+      </a>
+    </section>
+
+    <!-- Overview and specifications -->
+    <section class="section-padding" id="overview">
+      <div class="container">
+        <span class="section-kicker" data-i18n="overview.kicker">Pencatatan Berbasis Nilai</span>
+        <h1 class="section-title" data-i18n="overview.title">
+          Pencatatan absensi dan setoran hafalan murid.
+        </h1>
+        <p class="section-lead" data-i18n="overview.lead">
+          Dibuat untuk guru ngaji dan pengurus majelis taklim. Orang tua murid dapat melihat rekap progres anak langsung tanpa perlu membuat akun.
+        </p>
+
+        <!-- 4 Architectural Sharp Floating Cards (Spec Sheet) -->
+        <h2 class="section-kicker" style="margin-bottom: 1.5rem;" data-i18n="spec.title">Spesifikasi <img src="/images/typography-logo-no-bg.png" alt="Halaqoh" class="inline-brand-logo" /></h2>
+        <div class="spec-sheet-grid">
+          <div class="floating-card">
+            <h3 class="spec-card-title" data-i18n="spec.1.title">1. Penyimpanan Luring Mandiri</h3>
+            <p class="spec-card-text" data-i18n="spec.1.desc">
+              Data tersimpan di peramban via IndexedDB. Form tetap berjalan normal tanpa internet.
+            </p>
+          </div>
+
+          <div class="floating-card">
+            <h3 class="spec-card-title" data-i18n="spec.2.title">2. Deteksi Otomatis 5 Sesi Shalat</h3>
+            <p class="spec-card-text" data-i18n="spec.2.desc">
+              Subuh, Zuhur, Ashar, Magrib, dan Isya terdeteksi otomatis sesuai zona waktu lokal.
+            </p>
+          </div>
+
+          <div class="floating-card">
+            <h3 class="spec-card-title" data-i18n="spec.3.title">3. Akses Publik Tanpa Sandi</h3>
+            <p class="spec-card-text" data-i18n="spec.3.desc">
+              Orang tua membuka rekap lewat tautan unik via WhatsApp, tanpa perlu kata sandi.
+            </p>
+          </div>
+
+          <div class="floating-card">
+            <h3 class="spec-card-title" data-i18n="spec.4.title">4. Cetak PDF A4 Standar</h3>
+            <p class="spec-card-text" data-i18n="spec.4.desc">
+              Cetak laporan matriks bulanan format PDF A4 landscape langsung dari peramban.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- User roles and workflow -->
+    <section class="section-padding" id="roles">
+      <div class="container">
+        <span class="section-kicker" data-i18n="roles.kicker">Alur Tiga Peran</span>
+        <h2 class="section-title" data-i18n="roles.title">
+          Tiga peran pengguna dengan hak akses terpisah.
+        </h2>
+        <p class="section-lead" data-i18n="roles.lead">
+          Hak akses dipisahkan di server: guru mencatat bimbingan, orang tua memantau progres, dan pengurus mengelola data.
+        </p>
+
+        <div class="roles-grid">
+          <!-- Role 1: Guru Pengajar -->
+          <div class="floating-card role-card">
+            <span class="natural-number" data-i18n="role.1.num">1</span>
+            <span class="role-scope-badge" data-i18n="role.1.scope">Antarmuka: Absensi, Kalender, Riwayat, Statistik</span>
+            <h3 class="role-card-title" data-i18n="role.1.title">Guru Pengajar</h3>
+            <ul class="role-points-list">
+              <li class="role-point-item">
+                <strong data-i18n="role.1.p1.title">Presensi Luring</strong>
+                <span data-i18n="role.1.p1.desc">Catat kehadiran dan setoran langsung dari ponsel tanpa internet.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.1.p2.title">Kurikulum Lengkap</strong>
+                <span data-i18n="role.1.p2.desc">Dukungan Iqro 1 sampai 6 dan 114 surat Al-Qur'an.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.1.p3.title">Koreksi Fleksibel</strong>
+                <span data-i18n="role.1.p3.desc">Ubah atau perbaiki catatan presensi harian jika keliru.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.1.p4.title">Berbagi Cepat</strong>
+                <span data-i18n="role.1.p4.desc">Salin tautan profil murid langsung ke WhatsApp orang tua.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Role 2: Orang Tua Murid -->
+          <div class="floating-card role-card">
+            <span class="natural-number" data-i18n="role.2.num">2</span>
+            <span class="role-scope-badge" data-i18n="role.2.scope">Antarmuka: Halaman murid via tautan aman (/[slug])</span>
+            <h3 class="role-card-title" data-i18n="role.2.title">Orang Tua Murid</h3>
+            <ul class="role-points-list">
+              <li class="role-point-item">
+                <strong data-i18n="role.2.p1.title">Akses Tanpa Sandi</strong>
+                <span data-i18n="role.2.p1.desc">Buka laporan di browser ponsel tanpa aplikasi dan tanpa password.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.2.p2.title">Matriks 5 Sesi Shalat</strong>
+                <span data-i18n="role.2.p2.desc">Pantau rekap kehadiran harian di 5 waktu shalat.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.2.p3.title">Tautan Multi-Murid</strong>
+                <span data-i18n="role.2.p3.desc">Tampilan terpadu untuk kakak-beradik dalam satu tautan.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.2.p4.title">Unduh Laporan PDF</strong>
+                <span data-i18n="role.2.p4.desc">Unduh rekap bulanan format PDF siap cetak.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Role 3: Pengurus Majelis -->
+          <div class="floating-card role-card">
+            <span class="natural-number" data-i18n="role.3.num">3</span>
+            <span class="role-scope-badge" data-i18n="role.3.scope">Antarmuka: Dasbor administrasi (/admin)</span>
+            <h3 class="role-card-title" data-i18n="role.3.title">Pengurus Majelis</h3>
+            <ul class="role-points-list">
+              <li class="role-point-item">
+                <strong data-i18n="role.3.p1.title">Manajemen Murid</strong>
+                <span data-i18n="role.3.p1.desc">Daftarkan murid, atur status kelas, dan kelola tautan slug.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.3.p2.title">Akun Pengajar</strong>
+                <span data-i18n="role.3.p2.desc">Atur akun guru, penugasan sesi, dan setel ulang sandi.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.3.p3.title">Kalender & Libur</strong>
+                <span data-i18n="role.3.p3.desc">Jadwalkan kalender pengajian dan penetapan hari libur.</span>
+              </li>
+              <li class="role-point-item">
+                <strong data-i18n="role.3.p4.title">Cadangan & Ekspor</strong>
+                <span data-i18n="role.3.p4.desc">Unduh arsip database JSON utuh dan ekspor data CSV aman.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curriculum and capabilities -->
+    <section class="section-padding" id="curriculum">
+      <div class="container">
+        <span class="section-kicker" data-i18n="curriculum.kicker">Kapabilitas</span>
+        <h2 class="section-title" data-i18n="curriculum.title">
+          Fitur pokok untuk kegiatan mengaji harian.
+        </h2>
+        <p class="section-lead" data-i18n="curriculum.lead">
+          Formulir ringkas dan terarah, agar pengajar fokus mendampingi murid.
+        </p>
+
+        <div class="spec-sheet-grid">
+          <div class="floating-card">
+            <h3 class="spec-card-title" data-i18n="curriculum.p2.1.title">Cetak PDF A4 Native</h3>
+            <p class="spec-card-text" data-i18n="curriculum.p2.1.desc">
+              Dokumen matriks presensi landscape A4 terbuat langsung di peramban tanpa pihak ketiga.
+            </p>
+          </div>
+
+          <div class="floating-card">
+            <h3 class="spec-card-title" data-i18n="curriculum.p2.2.title">Cadangan JSON & Ekspor CSV</h3>
+            <p class="spec-card-text" data-i18n="curriculum.p2.2.desc">
+              Unduh arsip database JSON lengkap atau CSV yang terlindung dari injeksi formula.
+            </p>
+          </div>
+
+          <div class="floating-card">
+            <h3 class="spec-card-title" data-i18n="curriculum.p2.3.title">Pemulihan Data Atomik</h3>
+            <p class="spec-card-text" data-i18n="curriculum.p2.3.desc">
+              Pulihkan data dalam satu transaksi aman dengan proteksi kunci arsip cadangan.
+            </p>
+          </div>
+
+          <div class="floating-card">
+            <h3 class="spec-card-title" data-i18n="curriculum.p2.4.title">Privasi Murid No-Index</h3>
+            <p class="spec-card-text" data-i18n="curriculum.p2.4.desc">
+              Halaman murid dilengkapi proteksi anti-perayapan agar tidak terindeks di mesin pencari.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offline-first architecture -->
+    <section class="section-padding" id="offline">
+      <div class="container">
+        <span class="section-kicker" data-i18n="offline.kicker">Arsitektur Luring</span>
+        <h2 class="section-title" data-i18n="offline.title">
+          Pencatatan tetap aktif saat sinyal internet padam.
+        </h2>
+        <p class="section-lead" data-i18n="offline.lead">
+          Koneksi internet di musholla kerap tidak stabil. Sistem tetap mencatat data tanpa gangguan jaringan.
+        </p>
+
+        <!-- 4-Step Offline Flow -->
+        <div class="offline-steps-grid">
+          <div class="offline-step-card">
+            <span class="natural-number">1</span>
+            <h3 class="offline-step-title" data-i18n="offline.s1.title">1. Cache Data Perangkat</h3>
+            <p class="offline-step-desc" data-i18n="offline.s1.desc">
+              Aplikasi dan daftar murid tersimpan di memori perangkat, siap dipakai saat offline.
+            </p>
+          </div>
+
+          <div class="offline-step-card">
+            <span class="natural-number">2</span>
+            <h3 class="offline-step-title" data-i18n="offline.s2.title">2. Antrean Lokal IndexedDB</h3>
+            <p class="offline-step-desc" data-i18n="offline.s2.desc">
+              Saat menyimpan tanpa internet, data langsung masuk ke antrean lokal peramban.
+            </p>
+          </div>
+
+          <div class="offline-step-card">
+            <span class="natural-number">3</span>
+            <h3 class="offline-step-title" data-i18n="offline.s3.title">3. Indikator Antrean Terbaca</h3>
+            <p class="offline-step-desc" data-i18n="offline.s3.desc">
+              Jumlah catatan yang belum tersinkron tampil di bilah atas layar secara transparan.
+            </p>
+          </div>
+
+          <div class="offline-step-card">
+            <span class="natural-number">4</span>
+            <h3 class="offline-step-title" data-i18n="offline.s4.title">4. Sinkronisasi Otomatis</h3>
+            <p class="offline-step-desc" data-i18n="offline.s4.desc">
+              Saat koneksi kembali aktif, antrean tersinkronkan ke server secara kronologis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently asked questions -->
+    <section class="section-padding" id="faq">
+      <div class="container">
+        <span class="section-kicker" data-i18n="faq.kicker">Tanya Jawab</span>
+        <h2 class="section-title" data-i18n="faq.title">
+          Pertanyaan umum seputar operasional <img src="/images/typography-logo-no-bg.png" alt="Halaqoh" class="inline-brand-logo" />.
+        </h2>
+        <p class="section-lead" data-i18n="faq.lead">
+          Informasi penting seputar akses orang tua, privasi murid, dan pencatatan luring.
+        </p>
+
+        <div class="faq-accordion" role="region" aria-label="FAQ Accordion">
+          <!-- Question 1 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span data-i18n="faq.q1">Apakah orang tua murid harus mendaftar akun dan membuat kata sandi?</span>
+              <span class="faq-icon-indicator" aria-hidden="true"></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p class="faq-body-text" data-i18n="faq.a1">
+                  Tidak. Orang tua cukup membuka tautan unik murid (contoh: /murid-7xK9p2) via WhatsApp tanpa perlu login atau unduh aplikasi.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span data-i18n="faq.q2">Bagaimana jika jaringan internet di musholla mati saat jam mengaji?</span>
+              <span class="faq-icon-indicator" aria-hidden="true"></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p class="faq-body-text" data-i18n="faq.a2">
+                  Pencatatan tetap normal. Data disimpan di memori peramban (IndexedDB) dan otomatis disinkronkan saat internet kembali aktif.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span data-i18n="faq.q3">Apakah nama dan riwayat setoran murid dapat ditemukan di Google?</span>
+              <span class="faq-icon-indicator" aria-hidden="true"></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p class="faq-body-text" data-i18n="faq.a3">
+                  Tidak. Seluruh halaman profil murid dilindungi tag noindex dan disallow agar tidak terindeks oleh mesin pencari publik.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span data-i18n="faq.q4">Apakah murid bisa dicatat membaca Iqro sekaligus setoran surat dalam satu pertemuan?</span>
+              <span class="faq-icon-indicator" aria-hidden="true"></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p class="faq-body-text" data-i18n="faq.a4">
+                  Bisa. Pengajar dapat menginput capaian halaman Iqro dan setoran surat Al-Qur'an pada sesi yang sama tanpa saling menimpa.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="faq-item">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span data-i18n="faq.q5">Bagaimana cara pengurus memindahkan data jika berganti perangkat?</span>
+              <span class="faq-icon-indicator" aria-hidden="true"></span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p class="faq-body-text" data-i18n="faq.a5">
+                  Pengurus dapat mengunduh cadangan database JSON utuh dan CSV kapan saja melalui dasbor /admin, lalu memulihkannya ke perangkat baru.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demonstration request section -->
+    <section class="demo-section-wrapper" id="demo">
+      <div class="container">
+        <!-- Community Closing Card -->
+        <div class="demo-banner-card">
+          <span class="section-kicker" data-i18n="demo.kicker">Penerapan Pengajian</span>
+          <h2 class="section-title" data-i18n="demo.title">
+            Mulai pencatatan pengajian yang lebih teratur.
+          </h2>
+          <p class="section-lead" data-i18n="demo.lead">
+            Gunakan <img src="/images/typography-logo-no-bg.png" alt="Halaqoh" class="inline-brand-logo" /> untuk kemudahan guru ngaji, transparansi orang tua, dan ketertiban administrasi. Coba demo langsung melalui formulir.
+          </p>
+          <button 
+            type="button" 
+            class="btn-luxury-cta btn-luxury-cta-hero" 
+            data-tally-open="WOGdZJ" 
+            data-tally-layout="modal" 
+            data-tally-width="640" 
+            data-i18n="demo.btn">
+            Request Demo Sekarang
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site footer with landscape artwork -->
+  <footer class="site-footer" id="footer">
+    <!-- Background Landscape Artwork Layer (Full Landscape with Smooth 0% to 100% Opacity Transition) -->
+    <div class="footer-background-layer" aria-hidden="true">
+      <img src="/images/footer-art.png" alt="" class="footer-background-img" loading="lazy" />
+    </div>
+
+    <div class="container footer-content">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <a href="#top" class="footer-logo-link" aria-label="Kembali ke Beranda Halaqoh">
+            <img src="/images/typography-logo-no-bg.png" alt="HALAQOH" class="footer-logo-img" />
+          </a>
+          <p class="footer-mission" data-i18n="footer.mission">
+            Sistem pencatatan presensi dan setoran hafalan murid.
+          </p>
+        </div>
+
+        <div class="footer-nav-columns">
+          <!-- Col 1: PRODUK -->
+          <div>
+            <h4 class="footer-nav-col-title" data-i18n="footer.col1.title">Produk</h4>
+            <ul class="footer-nav-list">
+              <li><a href="#roles" class="footer-nav-link" data-i18n="footer.col1.l1">Alur Peran</a></li>
+              <li><a href="#curriculum" class="footer-nav-link" data-i18n="footer.col1.l2">Kapabilitas & PDF</a></li>
+              <li><a href="#offline" class="footer-nav-link" data-i18n="footer.col1.l3">Sistem Luring</a></li>
+              <li><a href="#faq" class="footer-nav-link" data-i18n="footer.col1.l4">Tanya Jawab</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 2: KOMUNITAS -->
+          <div>
+            <h4 class="footer-nav-col-title" data-i18n="footer.col2.title">Komunitas</h4>
+            <ul class="footer-nav-list">
+              <li><a href="#roles" class="footer-nav-link" data-i18n="footer.col2.l1">Panduan Pengajar</a></li>
+              <li><a href="#roles" class="footer-nav-link" data-i18n="footer.col2.l2">Akses Wali Murid</a></li>
+              <li><a href="#roles" class="footer-nav-link" data-i18n="footer.col2.l3">Dasbor Pengurus</a></li>
+              <li><a href="#demo" class="footer-nav-link" data-i18n="footer.col2.l4">Request Demo</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3: KEAMANAN -->
+          <div>
+            <h4 class="footer-nav-col-title" data-i18n="footer.col3.title">Keamanan</h4>
+            <ul class="footer-nav-list">
+              <li><a href="#curriculum" class="footer-nav-link" data-i18n="footer.col3.l1">Privasi Murid No-Index</a></li>
+              <li><a href="#curriculum" class="footer-nav-link" data-i18n="footer.col3.l2">Ekspor Cadangan JSON</a></li>
+              <li><a href="#overview" class="footer-nav-link" data-i18n="footer.col3.l3">Bebas Biaya Langganan</a></li>
+              <li><a href="https://tally.so/r/WOGdZJ" target="_blank" rel="noopener noreferrer" class="footer-nav-link" data-i18n="footer.col3.l4">Formulir Demo Tally</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-middle-bar">
+        <p class="footer-copyright-text" data-i18n="footer.copyright">
+          © 2026 <img src="/images/typography-logo-no-bg.png" alt="Halaqoh" class="inline-brand-logo" />. ikhlasulabda.
+        </p>
+        <div class="footer-actions-row">
+          <a href="#top" class="footer-link-subtle" data-i18n="footer.backToTop">Kembali ke Atas ↑</a>
+          <button 
+            type="button" 
+            class="btn-luxury-cta btn-luxury-cta-footer" 
+            data-tally-open="WOGdZJ" 
+            data-tally-layout="modal" 
+            data-tally-width="640" 
+            data-i18n="footer.ctaBtn">
+            Request Demo →
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main ES Module Script -->
+  <script type="module" src="/src/scripts/main.js"></script>
+</body>
+</html>
